@@ -1,0 +1,25 @@
+<% team = @team || @team %>
+<% context ||= team %>
+<% collection ||= :trades %>
+<% hide_actions ||= false %>
+<% hide_back ||= false %>
+
+<% with_attribute_settings object: trade do %>
+  <tr data-id="<%= trade.id %>">
+    <%= render "shared/tables/checkbox", object: trade %>
+    <td><%= render 'shared/attributes/text', attribute: :description, url: [:account, trade] %></td>
+    <%# 🚅 super scaffolding will insert new fields above this line. %>
+    <td><%= render 'shared/attributes/date_and_time', attribute: :created_at %></td>
+    <td class="buttons">
+      <% unless hide_actions %>
+        <% if can? :edit, trade %>
+          <%= link_to t('.buttons.shorthand.edit'), [:edit, :account, trade], class: 'button-secondary button-smaller' %>
+        <% end %>
+        <% if can? :destroy, trade %>
+          <%= button_to t('.buttons.shorthand.destroy'), [:account, trade], method: :delete, data: { confirm: t('.buttons.confirmations.destroy', model_locales(trade)) }, class: 'button-secondary button-smaller' %>
+        <% end %>
+        <%# 🚅 super scaffolding will insert new action model buttons above this line. %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

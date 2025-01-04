@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_16_215520) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_04_133535) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -237,6 +237,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_215520) do
     t.string "locale"
   end
 
+  create_table "trades", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_trades_on_team_id"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -362,6 +370,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_215520) do
   add_foreign_key "scaffolding_completely_concrete_tangible_things", "scaffolding_absolutely_abstract_creative_concepts", column: "absolutely_abstract_creative_concept_id"
   add_foreign_key "scaffolding_completely_concrete_tangible_things_assignments", "memberships"
   add_foreign_key "scaffolding_completely_concrete_tangible_things_assignments", "scaffolding_completely_concrete_tangible_things", column: "tangible_thing_id"
+  add_foreign_key "trades", "teams"
   add_foreign_key "users", "oauth_applications", column: "platform_agent_of_id"
   add_foreign_key "webhooks_outgoing_endpoints", "scaffolding_absolutely_abstract_creative_concepts"
   add_foreign_key "webhooks_outgoing_endpoints", "teams"
