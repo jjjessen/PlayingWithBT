@@ -30,6 +30,8 @@ class Api::V1::TradesControllerTest < Api::Test
     trade = Trade.find(trade_data["id"])
 
     assert_equal_or_nil trade_data['description'], trade.description
+    assert_equal_or_nil trade_data['price'], trade.price
+    assert_equal_or_nil trade_data['currency'], trade.currency
     # 🚅 super scaffolding will insert new fields above this line.
 
     assert_equal trade_data["team_id"], trade.team_id
@@ -89,6 +91,8 @@ class Api::V1::TradesControllerTest < Api::Test
       access_token: access_token,
       trade: {
         description: 'Alternative String Value',
+        price: 'Alternative String Value',
+        currency: 'Alternative String Value',
         # 🚅 super scaffolding will also insert new fields above this line.
       }
     }
@@ -101,6 +105,8 @@ class Api::V1::TradesControllerTest < Api::Test
     # But we have to manually assert the value was properly updated.
     @trade.reload
     assert_equal @trade.description, 'Alternative String Value'
+    assert_equal @trade.price, 'Alternative String Value'
+    assert_equal @trade.currency, 'Alternative String Value'
     # 🚅 super scaffolding will additionally insert new fields above this line.
 
     # Also ensure we can't do that same action as another user.

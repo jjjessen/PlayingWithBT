@@ -1,4 +1,6 @@
 class Trade < ApplicationRecord
+  monetize :price_cents, with_model_currency: :currency
+
   # 🚅 add concerns above.
 
   # 🚅 add attribute accessors above.

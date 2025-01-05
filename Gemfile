@@ -11,6 +11,7 @@ ruby(File.read(File.expand_path(".ruby-version", __dir__)))
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.0"
 
+gem 'money-rails', '~> 1.12'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

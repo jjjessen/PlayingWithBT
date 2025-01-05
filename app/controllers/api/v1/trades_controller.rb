@@ -45,6 +45,8 @@ if defined?(Api::V1::ApplicationController)
         strong_params = params.require(:trade).permit(
           *permitted_fields,
           :description,
+          :price,
+          :currency,
           # 🚅 super scaffolding will insert new fields above this line.
           *permitted_arrays,
           # 🚅 super scaffolding will insert new arrays above this line.

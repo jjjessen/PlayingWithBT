@@ -6,6 +6,8 @@
 
     <% with_field_settings form: form do %>
       <%= render 'shared/fields/text_field', method: :description, options: {autofocus: true} %>
+      <%= render 'shared/fields/text_field', method: :price %>
+      <%= render 'shared/fields/text_field', method: :currency %>
       <%# 🚅 super scaffolding will insert new fields above this line. %>
     <% end %>
 

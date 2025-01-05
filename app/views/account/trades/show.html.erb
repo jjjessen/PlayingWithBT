@@ -12,6 +12,8 @@
         <% box.body do %>
           <% with_attribute_settings object: @trade, strategy: :label do %>
             <%= render 'shared/attributes/text', attribute: :description %>
+            <%= render 'shared/attributes/text', attribute: :price %>
+            <%= render 'shared/attributes/text', attribute: :currency %>
             <%# 🚅 super scaffolding will insert new fields above this line. %>
           <% end %>
         <% end %>

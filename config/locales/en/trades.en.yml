@@ -31,6 +31,18 @@ en:
         heading: *description
         api_title: *description
         api_description: *description
+      price:
+        _: &price Price
+        label: *price
+        heading: *price
+        api_title: *price
+        api_description: *price
+      currency:
+        _: &currency Currency
+        label: *currency
+        heading: *currency
+        api_title: *currency
+        api_description: *currency
       # 🚅 super scaffolding will insert new fields above this line.
       created_at:
         _: &created_at Added
@@ -87,6 +99,8 @@ en:
   activerecord:
     attributes:
       trade:
+        price: *price
+        currency: *currency
         # 🚅 super scaffolding will insert new activerecord attributes above this line.
         created_at: *created_at
         updated_at: *updated_at
